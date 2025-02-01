@@ -1,5 +1,6 @@
 package org.bookoholic;
 
+import jakarta.inject.Inject;
 import org.bson.types.ObjectId;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,6 @@ public class Book {
     private Integer sellingPrice;
     private String type;
 
-    // Default constructor required for deserialization
     public Book() {
         this._id = new ObjectId();
     }
@@ -30,30 +30,12 @@ public class Book {
         return ifsc;
     }
 
-    public ObjectId get_id() {
+    public ObjectId getId() {
         return _id;
     }
 
-    public void getFields(Book book){
-        if(book.getName() != null){
-            this.setName(book.getName());
-        }
-
-        if(!book.getAuthors().isEmpty()){
-            this.setAuthors(book.getAuthors());
-        }
-
-        if(book.getType() != null){
-            this.setType(book.getType());
-        }
-
-        if(book.getIfsc() != null){
-            this.setIfsc(book.getIfsc());
-        }
-
-        if(book.getSellingPrice() != null){
-            this.setSellingPrice(book.getSellingPrice());
-        }
+    public void setId(ObjectId _id) {
+        this._id = _id;
     }
 
     public void setIfsc(String ifsc) {
@@ -82,5 +64,28 @@ public class Book {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+
+    public void getFields(Book book){
+        if(book.getName() != null){
+            this.setName(book.getName());
+        }
+
+        if(!book.getAuthors().isEmpty()){
+            this.setAuthors(book.getAuthors());
+        }
+
+        if(book.getType() != null){
+            this.setType(book.getType());
+        }
+
+        if(book.getIfsc() != null){
+            this.setIfsc(book.getIfsc());
+        }
+
+        if(book.getSellingPrice() != null){
+            this.setSellingPrice(book.getSellingPrice());
+        }
     }
 }
